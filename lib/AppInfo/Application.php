@@ -29,6 +29,7 @@ declare(strict_types=1);
 namespace OCA\Forms\AppInfo;
 
 use OCA\Forms\Capabilities;
+use OCA\Forms\UserMigrator;
 use OCA\Forms\Listener\UserDeletedListener;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -57,6 +58,7 @@ class Application extends App implements IBootstrap {
 
 		$context->registerCapability(Capabilities::class);
 		$context->registerEventListener(UserDeletedEvent::class, UserDeletedListener::class);
+		$context->registerUserMigrator(UserMigrator::class);
 	}
 
 	/**
